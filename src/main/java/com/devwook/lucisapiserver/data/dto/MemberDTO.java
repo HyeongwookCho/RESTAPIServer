@@ -1,4 +1,4 @@
-package com.devwook.lucisapiserver.dto;
+package com.devwook.lucisapiserver.data.dto;
 
 import lombok.Getter;
 import lombok.Setter;

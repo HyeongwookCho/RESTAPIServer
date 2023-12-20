@@ -1,6 +1,6 @@
 package com.devwook.lucisapiserver.controller;
 
-import com.devwook.lucisapiserver.dto.MemberDTO;
+import com.devwook.lucisapiserver.data.dto.MemberDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
