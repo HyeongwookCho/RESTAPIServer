@@ -1,7 +1,10 @@
 package com.devwook.lucisapiserver.controller;
 
 
+import com.devwook.lucisapiserver.data.dto.LSMSDTO;
 import com.devwook.lucisapiserver.data.dto.ProductDto;
+import com.devwook.lucisapiserver.data.service.LSMSService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -9,19 +12,20 @@ import org.springframework.web.bind.annotation.*;
 //LSMS (Lucis System Monitoring Service)
 public class LSMSController {
 
-    private LSMSService LSMSservice;
+    private LSMSService lsmsService;
 
-    public LSMSController(LSMSService LSMSservice) {
-        this.LSMSservice = LSMSservice;
+    @Autowired
+    public LSMSController(LSMSService lsmsService) {
+        this.lsmsService = lsmsService;
     }
 
     @GetMapping(value = "/client-data/{dataId}")
-    public LSMSDto getData(@PathVariable String dataId) {
-        return LSMSservice.getData(dataId);
+    public LSMSDTO getData(@PathVariable String dataId) {
+        return lsmsService.getData(dataId);
     }
 
     @PostMapping(value = "/clinet-data")
-    public LSMSDto createData(@RequestBody LSMSDto LSMSdto) {
-
+    public LSMSDTO createData(@RequestBody LSMSDTO lsmsDto) {
+        return lsmsDto;
     }
 }

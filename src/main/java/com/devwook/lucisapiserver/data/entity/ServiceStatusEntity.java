@@ -1,4 +1,4 @@
 package com.devwook.lucisapiserver.data.entity;
 
-public class LSMSEntity {
+public class ServiceStatusEntity {
 }
