@@ -6,7 +6,8 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -18,48 +19,52 @@ public class LSMSDTO {
     private List<ServiceStatus> serviceStatus;
 
 
-    @Data
+    @Getter
+    @Setter
     @NoArgsConstructor
     @AllArgsConstructor
     @ToString
     @Builder
     public static class SystemResource {
-        private String serverName;
+        private String server_host_name;
         private List<DriveInfo> driveInfo;
-        private Double CPUInfo;
-        private Long memoryInfo;
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS")
-        private LocalDateTime collectStartTime;
-        @Data
+        private Double cpu_usage_ratio;
+        private String memory_usage;
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
+        private LocalDateTime collect_start_time;
+        @Getter
+        @Setter
         @NoArgsConstructor
         @AllArgsConstructor
         @ToString
         @Builder
         public static class DriveInfo {
-            private String Name;
-            private Long TotalSize;
-            private Long CurrentUsage;
-            private Double UsageRatio;
+            private String drive_name;
+            private Long total_disk_size;
+            private Long current_disk_usage;
+            private Double usage_ratio;
         }
     }
 
-    @Data
+    @Getter
+    @Setter
     @NoArgsConstructor
     @AllArgsConstructor
     @ToString
     @Builder
     public static class ProcessStatus {
-        private String Name;
-        private String Status;
+        private String name;
+        private Integer status;
     }
 
-    @Data
+    @Getter
+    @Setter
     @NoArgsConstructor
     @AllArgsConstructor
     @ToString
     @Builder
     public static class ServiceStatus {
-        private String Name;
-        private String Status;
+        private String name;
+        private Integer status;
     }
 }

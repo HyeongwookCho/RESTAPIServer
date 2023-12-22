@@ -1,12 +1,11 @@
 package com.devwook.lucisapiserver.data.entity;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,31 +13,35 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "VMS_RESOURCE")
+@Table(name = "vms_resource")
 public class SystemResourceEntity {
 
-    @Column
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
-    @Column
+    @CreationTimestamp
     LocalDateTime timestamp;
 
+    @Column
     String server_host_name;
 
-    String drive_name;
-
-    Long total_disk_size;
-
-    Long current_disk_usage;
-
-    Double usage_ratio;
-
+    @Column
     Double cpu_usage_ratio;
 
-    Long memory_usage;
+    @Column
+    String memory_usage;
 
+    @Column
     LocalDateTime collect_start_time;
 
+    @OneToMany(mappedBy = "systemResourceEntity")
+    private List<DriveInfoEntity> driveInfo;
+
+    @OneToMany(mappedBy = "systemResourceEntity")
+    private List<ProcessStatusEntity> processStatus;
+
+    @OneToMany(mappedBy = "systemResourceEntity")
+    private List<ServiceStatusEntity> serviceStatus;
 
 }

@@ -2,26 +2,33 @@ package com.devwook.lucisapiserver.data.entity;
 
 import javax.persistence.*;
 import lombok.*;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "SERVICE_STATUS")
-public class ServiceStatusEntity {
+@Table(name = "drive_info")
+public class DriveInfoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @ManyToOne
-    @JoinColumn(name = "system_resource_id")
+    @JoinColumn(name="system_resource_id")
     private SystemResourceEntity systemResourceEntity;
 
-    @Column(name = "name")
-    private String name;
+    @Column
+    String drive_name;
 
-    @Column(name = "status")
-    private Integer status;
+    @Column
+    Long total_disk_size;
+
+    @Column
+    Long current_disk_usage;
+
+    @Column
+    Double usage_ratio;
 }
