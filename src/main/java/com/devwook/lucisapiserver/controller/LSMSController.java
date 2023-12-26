@@ -23,7 +23,7 @@ public class LSMSController {
 
     @PostMapping("/result")
     public ResponseEntity<Void> saveLSMSDTO(@RequestBody LSMSDTO dto) {
-        logger.info("Received LSMSDTO: {}", dto);
+        logger.debug("Received LSMSDTO: {}", dto);
         lsmsService.saveLSMSDTO(dto);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

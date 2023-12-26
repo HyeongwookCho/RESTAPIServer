@@ -30,7 +30,7 @@ public class LSMSDTO {
         private List<DriveInfo> driveInfo;
         private Double cpu_usage_ratio;
         private String memory_usage;
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH.mm.ss.SSS")
         private LocalDateTime collect_start_time;
         @Getter
         @Setter
